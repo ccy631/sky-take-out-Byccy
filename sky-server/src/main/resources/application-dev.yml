@@ -6,3 +6,6 @@ sky:
     database: sky_take_out
     username: root
     password: 20060423
+
+knife4j:
+  enable: true
