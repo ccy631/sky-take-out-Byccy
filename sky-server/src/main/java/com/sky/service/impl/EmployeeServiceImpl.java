@@ -16,6 +16,8 @@ import com.sky.exception.PasswordErrorException;
 import com.sky.mapper.EmployeeMapper;
 import com.sky.result.PageResult;
 import com.sky.service.EmployeeService;
+import lombok.val;
+import lombok.var;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -110,5 +112,25 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<Employee> records = page.getResult();
 
         return new PageResult(total, records);
+    }
+
+    /**
+     * 启用禁用员工账号
+     * @param status
+     * @param id
+     */
+    public void startOrStop(Integer status, Long id) {
+        //update employee set status = ? where id = ?
+        /**
+        Employee employee = new Employee();
+        employee.setStatus(status);
+        employee.setId(id);
+        **/
+
+        Employee employee = Employee.builder()
+                .status( status)
+                .id(id)
+                .build();
+        employeeMapper.update(employee);
     }
 }
